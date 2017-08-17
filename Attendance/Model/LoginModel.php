@@ -61,6 +61,7 @@ class LoginModel
 
 
     public function setLogin($id){
+
         $safeid = mysqli_real_escape_string($this->link->con, $id);
         $login_date = date("Y-m-d H:i:s");
         $query="insert into employeetime  (empid,login,logout) values ($safeid,'$login_date',NULL )";
@@ -81,27 +82,21 @@ class LoginModel
 
 
 
-    public function AdminView(){
-        $query= "select employeedet.Name,employeetime.login,employeetime.logout from employeetime LEFT JOIN employeedet on employeedet.ID=employeetime.empid";
-        $res=$this->link->con->query($query);
-        $response=array();
-        //$dao=new EmployeeDao();
 
 
-        if($res->num_rows>0){
-            while($row=$res->fetch_assoc()){
-                $data = array();
-                $data['name'] = $row['Name'];
-//                $name=;
-                $data['login'] = $row['login'];
-                $data['logout'] = $row['logout'];
+    public  function Register($id,$name,$Password,$Role,$DOJ){
+        $safepassword=mysqli_escape_string($this->link->con,$Password);
+        $safeDOJ=mysqli_escape_string($this->link->con,$DOJ);
+        $saferole=mysqli_escape_string($this->link->con,$Role);
+        $safeName=mysqli_escape_string($this->link->con,$name);
 
-                array_push($response, $data);
-
-            }
+        $safeid=mysqli_escape_string($this->link->con,$id);
+        //echo $safepassword;
+        //echo "insert into employeedet  (ID,Name,DOJ,Password,Role) values ($id,$safeName,$safeDOJ,$safepassword,$saferole)";
+        $query="insert into employeedet  (ID,Name,DOJ,Password,Role) values ($safeid,'$safeName','$safeDOJ','$safepassword','$saferole')";
+        if($this->link->con->query($query)===true){
+            return true;
         }
-
-        return $response;
 
     }
 }

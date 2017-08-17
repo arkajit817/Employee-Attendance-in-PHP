@@ -2,9 +2,13 @@
 <!--$admin=new AdminController();-->
 <?php
 include_once "../Controller/AdminController.php";
+include_once "../Controller/TimeController.php";
 
 include_once "../Model/LoginModel.php";
+include_once "../Model/AdminModel.php";
 $data = $loginModel->AdminView();
+$adminC=new TimeController();
+$a=$adminC->sendEmail();
 
 
 //$data= json_decode($user);
@@ -15,25 +19,22 @@ $data = $loginModel->AdminView();
 
 <head>
 
-    <link href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel = "stylesheet">
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
-
-    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" type="text/css" href="../CSS/Bootstrap.css">
+    <script type="text/javascript" src="../JS/jQuery.js"></script>
+    <script src="../JS/Bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="../CSS/Datatables.css">
     <link rel="stylesheet" type="text/css" href="/DataTables/datatables.css">
+    <script src="../JS/DataTables.js"></script>
 
-    <script type="text/javascript" charset="utf8" src="/ DataTables/datatables.js"></script>
+
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/jQueryDatatable.css">
 
 
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"></script>
 
-
-    <script type="text/javascript" charset="utf8" src="http://https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-
+<script src="../JS/jQueryDatatable.js"></script>
     <link rel="stylesheet" type="text/css" href="../CSS/Style.css">
 
     <script>
@@ -43,6 +44,7 @@ $data = $loginModel->AdminView();
 </script>
 </head>
 <h1>Employee Entry & Exit Time</h1>
+
 
 
     <table border="2" id="example">
@@ -71,9 +73,6 @@ $data = $loginModel->AdminView();
 
                 echo "<td>",$diff->m,"</td>";
 
-                //$logout=date_create($row['logout']);
-                //$diff=date_diff($login,$logout);
-                //echo "<td>",$diff,"</td>";
 
 
                 echo "</tr>";

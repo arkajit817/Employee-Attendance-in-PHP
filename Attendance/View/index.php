@@ -4,7 +4,7 @@
     <meta http-equiv="Cont  ent-Type" content="text/html; charset=ISO-8859-1">
     <link rel="stylesheet" type="text/css" href="../CSS/Style.css">
 
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="../JS/jQuery.js"></script>
     <title>Insert title here</title>
 </head>
 <body>
@@ -43,47 +43,15 @@
 
 
 <div class="register">
+    <a href="Register.php">Register</a>
 
 
     <a href="AdminLogin.php">Admin</a>
 </div>
 
 
-<!--<script>
 
-    jQuery(function ($) {
-        var id = $('#empid').val();
-
-        $('#empid').blur(function () {
-            $.ajax({
-                type: 'post',
-                url: '../Controller/ScriptController.php',
-                data: "id=" + $('#empid').val(),
-
-                success: function (data) {
-                    data = JSON.parse(data); // data.status, data.loginTime
-                    loginTime = data.loginTime;
-                    if (data.status) {
-                        $("#btnAddProfile").val('Logout');
-                        $ajax({
-                            type: post,
-                            data: JSON.stringify( empId, loginTime )
-                        })
-                    }
-                    else {
-                        $("#btnAddProfile").val('Logout');
-                    }
-                }
-
-            })
-
-        })
-
-    })
-
-</script>
--->
-<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script src="../JS/jQuery3.1.0.js"></script>
 <script type="text/javascript" src="../JS/Script.js"></script>
 
 </body>

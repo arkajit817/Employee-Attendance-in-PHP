@@ -1,5 +1,6 @@
 <?php
 require_once '../Model/LoginModel.php';
+require_once '../Model/AdminModel.php';
 //class AdminController
 //{
 //
@@ -8,16 +9,16 @@ require_once '../Model/LoginModel.php';
 //    }
 //    public function Admin()
 //    {
+    $loginModel=new AdminModel();
+    $check=new LoginModel();
 
-    $loginModel = new LoginModel();
 
-//    echo "something";
 
 
     if (isset($_POST['empid']) && $_POST['password']) {
         $id = $_POST['empid'];
         $password = $_POST['password'];
-        $user = $loginModel->LogincheckAdmin($id, $password);
+        $user = $check->LogincheckAdmin($id, $password);
         if ($user == 0) {
             $Message = urlencode("error ");
             header("location:../View/Index.php?Message=" . $Message);
